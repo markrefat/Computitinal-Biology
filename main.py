@@ -20,6 +20,8 @@ for peptide_id in peptide_ids:
     print(" - Peptide hit sequence:", hit.getSequence())
     mz = hit.getSequence().getMonoWeight(Residue.ResidueType.Full, hit.getCharge()) / hit.getCharge()
     print(" - Peptide hit monoisotopic m/z:", mz)
+    print(" - Peptide ppm error:", abs(mz - peptide_id.getMZ())/mz *10**6 )
+    print(" - Peptide hit score:", hit.getScore())
     score=mz/peptide_id.getMZ()
     print("comparsion score = ", score)
     a = str(hit.getSequence())
